@@ -1,0 +1,51 @@
+{
+  "name": "leaflet.sidepanel",
+  "version": "1.0.0",
+  "description": "Slide side panel plugin for Leaflet",
+  "author": "cyclingbyte",
+  "license": "MIT",
+  "private": false,
+  "type": "module",
+  "main": "dist/leaflet-sidepanel.cjs.js",
+  "unpkg": "dist/leaflet-sidepanel.umd.js",
+  "module": "dist/leaflet-sidepanel.es.js",
+  "style": "dist/style.css",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "build": "vite build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --max-warnings 0 . || (echo 'Linter failed' && exit 1)",
+    "lint:fix": "eslint --fix .",
+    "format": "prettier --write src/",
+    "format:check": "prettier --check src/ || (echo 'Code is not formatted' && exit 1)"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyclingbyte/Leaflet.SidePanel.git"
+  },
+  "keywords": [
+    "leaflet",
+    "sidebar",
+    "side-bar",
+    "sidepanel",
+    "side-panel"
+  ],
+  "bugs": {
+    "url": "https://github.com/cyclingbyte/Leaflet.SidePanel/issues"
+  },
+  "peerDependencies": {
+    "leaflet": "^1.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.9.1",
+    "prettier": "^3.3.3",
+    "sass": "^1.77.8",
+    "vite": "^5.4.2"
+  },
+  "files": [
+    "dist/",
+    "CHANGELOG.md"
+  ]
+}
