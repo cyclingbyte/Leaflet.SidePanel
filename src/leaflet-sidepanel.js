@@ -41,11 +41,11 @@ L.Control.SidePanel = L.Control.extend({
 
     // If there are tabs, start them.
     if (this.options.hasTabs) {
-      this.initTabs(map, this.options.tabsPosition);
+      this._initTabs(map, this.options.tabsPosition);
     }
   },
 
-  initTabs: function (map, tabsPosition) {
+  _initTabs: function (map, tabsPosition) {
     if (typeof tabsPosition === 'string') {
       L.DomUtil.addClass(this._panel, 'tabs-' + tabsPosition);
     }
@@ -118,6 +118,68 @@ L.Control.SidePanel = L.Control.extend({
     this._toggleButton(map);
   },
 
+  toggle: function (map, _e) {
+    let IS_OPENED = true;
+    let opened = L.DomUtil.hasClass(this._panel, 'opened');
+    let closed = L.DomUtil.hasClass(this._panel, 'closed');
+
+    if (!opened && !closed) {
+      L.DomUtil.addClass(this._panel, 'opened');
+    } else if (!opened && closed) {
+      L.DomUtil.addClass(this._panel, 'opened');
+      L.DomUtil.removeClass(this._panel, 'closed');
+    } else if (opened && !closed) {
+      IS_OPENED = false;
+      L.DomUtil.removeClass(this._panel, 'opened');
+      L.DomUtil.addClass(this._panel, 'closed');
+    } else {
+      L.DomUtil.addClass(this._panel, 'opened');
+    }
+
+    if (this.options.pushControls) {
+      if (!map) {
+        console.error(
+          'Leaflet.SidePanel: You must pass the map instance to the toggle method when using pushControls option.'
+        );
+      }
+      let controlsContainer = map
+        .getContainer()
+        .querySelector('.leaflet-control-container');
+
+      L.DomUtil.addClass(controlsContainer, 'leaflet-anim-control-container');
+
+      if (IS_OPENED) {
+        L.DomUtil.removeClass(
+          controlsContainer,
+          this.options.panelPosition + '-closed'
+        );
+        L.DomUtil.addClass(
+          controlsContainer,
+          this.options.panelPosition + '-opened'
+        );
+      } else {
+        L.DomUtil.removeClass(
+          controlsContainer,
+          this.options.panelPosition + '-opened'
+        );
+        L.DomUtil.addClass(
+          controlsContainer,
+          this.options.panelPosition + '-closed'
+        );
+      }
+    }
+  },
+
+  open: function (map) {
+    let opened = L.DomUtil.hasClass(this._panel, 'opened');
+    if (!opened) this.toggle(map);
+  },
+
+  close: function (map) {
+    let closed = L.DomUtil.hasClass(this._panel, 'closed');
+    if (!closed) this.toggle(map);
+  },
+
   _toggleButton: function (map) {
     const container = this._panel.querySelector('.sidepanel-toggle-container');
     const button = container.querySelector('.sidepanel-toggle-button');
@@ -126,53 +188,7 @@ L.Control.SidePanel = L.Control.extend({
       button,
       'click',
       function (_e) {
-        let IS_OPENED = true;
-        let opened = L.DomUtil.hasClass(this._panel, 'opened');
-        let closed = L.DomUtil.hasClass(this._panel, 'closed');
-
-        if (!opened && !closed) {
-          L.DomUtil.addClass(this._panel, 'opened');
-        } else if (!opened && closed) {
-          L.DomUtil.addClass(this._panel, 'opened');
-          L.DomUtil.removeClass(this._panel, 'closed');
-        } else if (opened && !closed) {
-          IS_OPENED = false;
-          L.DomUtil.removeClass(this._panel, 'opened');
-          L.DomUtil.addClass(this._panel, 'closed');
-        } else {
-          L.DomUtil.addClass(this._panel, 'opened');
-        }
-
-        if (this.options.pushControls) {
-          let controlsContainer = map
-            .getContainer()
-            .querySelector('.leaflet-control-container');
-
-          L.DomUtil.addClass(
-            controlsContainer,
-            'leaflet-anim-control-container'
-          );
-
-          if (IS_OPENED) {
-            L.DomUtil.removeClass(
-              controlsContainer,
-              this.options.panelPosition + '-closed'
-            );
-            L.DomUtil.addClass(
-              controlsContainer,
-              this.options.panelPosition + '-opened'
-            );
-          } else {
-            L.DomUtil.removeClass(
-              controlsContainer,
-              this.options.panelPosition + '-opened'
-            );
-            L.DomUtil.addClass(
-              controlsContainer,
-              this.options.panelPosition + '-closed'
-            );
-          }
-        }
+        this.toggle(map, _e);
       }.bind(this),
       container
     );
