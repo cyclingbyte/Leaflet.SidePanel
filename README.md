@@ -12,6 +12,13 @@ This repository is a copy of [maxwell-ilai/Leaflet.SidePanel](https://github.com
 npm i Leaflet.SidePanel
 ```
 
+### Browser | HTML
+Include the script and css in your html file
+```html
+<link rel="stylesheet" href="https://www.unpkg.com/leaflet.sidepanel@1.0.1/dist/style.css">
+<script src="https://www.unpkg.com/leaflet.sidepanel@1.0.1/dist/leaflet-sidepanel.umd.js"></script>
+```
+
 ## Requirements
 
 - [leaflet](https://github.com/Leaflet/Leaflet) (v1.0.0 or higher)
@@ -25,6 +32,9 @@ npm i Leaflet.SidePanel
 - darkMode: true | _false (default)_ [boolean]
 - pushControls: true | _false (default)_ [boolean]
 - startTab: _1 (default)_ [number | string]
+
+## Demo
+You can find a demo [here](https://cyclingbyte.github.io/Leaflet.SidePanel/ 'Demo for Leaflet.SidePanel')
 
 ## Example
 

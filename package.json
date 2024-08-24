@@ -2,7 +2,7 @@
   "name": "leaflet.sidepanel",
   "version": "1.0.1",
   "description": "Slide side panel plugin for Leaflet",
-  "author": "cyclingbyte",
+  "author": "cyclingbyte <cyclingbyte@web.de>",
   "license": "MIT",
   "private": false,
   "type": "module",

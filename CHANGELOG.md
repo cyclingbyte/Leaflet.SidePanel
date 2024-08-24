@@ -1,5 +1,8 @@
 # Leaflet.SidePanel Changelog
 
+## v1.0.1 (2024-08-24)
+- fix!: dist directory missing in public npm package
+
 ## v1.0.0 (2024-08-24)
 
 Initial release.
