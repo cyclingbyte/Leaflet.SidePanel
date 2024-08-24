@@ -12,6 +12,9 @@
   "[json]": {
     "editor.tabSize": 2,
   },
+  "[html]": {
+    "editor.tabSize": 2,
+  },
   "prettier.configPath": ".prettierrc.json",
   "prettier.semi": true,
   "prettier.tabWidth": 2,
