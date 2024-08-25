@@ -43,7 +43,13 @@ L.Control.SidePanel = L.Control.extend({
     // If there are tabs, start them.
     if (this.options.hasTabs) {
       this._initTabs(map, this.options.tabsPosition);
+    } else {
+      this._initContent(map);
     }
+  },
+
+  _initContent: function (map) {
+    this._toggleButton(map);
   },
 
   _initTabs: function (map, tabsPosition) {
