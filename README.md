@@ -1,3 +1,12 @@
+![npm version](https://img.shields.io/npm/v/leaflet.sidepanel)
+![npm downloads](https://img.shields.io/npm/dt/leaflet.sidepanel)
+![npm license](https://img.shields.io/npm/l/leaflet.sidepanel)
+![last commit](https://img.shields.io/github/last-commit/cyclingbyte/Leaflet.SidePanel)
+![issues open](https://img.shields.io/github/issues/cyclingbyte/Leaflet.SidePanel)![issues closed](https://img.shields.io/github/issues-closed/cyclingbyte/Leaflet.SidePanel?label=)
+<!-- ![npm dependents](https://img.shields.io/librariesio/dependents/npm/leaflet.sidepanel) -->
+<!-- ![git stars](https://img.shields.io/github/stars/cyclingbyte/Leaflet.SidePanel) -->
+
+
 # Leaflet.SidePanel
 
 Slide side panel plugin for [Leaflet](https://leafletjs.com/ 'Leaflet Homepage')
