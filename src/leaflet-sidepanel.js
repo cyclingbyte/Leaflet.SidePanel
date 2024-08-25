@@ -15,6 +15,7 @@ L.Control.SidePanel = L.Control.extend({
     darkMode: false,
     pushControls: false,
     startTab: 1,
+    onTabClick: undefined,
   },
 
   initialize: function (id, options) {
@@ -80,12 +81,15 @@ L.Control.SidePanel = L.Control.extend({
           L.DomUtil.addClass(startTab, 'active');
           L.DomUtil.addClass(startContent, 'active');
         }
+        const options = this.options;
 
         L.DomEvent.on(
           tabLink,
           'click',
           function (e) {
             L.DomEvent.preventDefault(e);
+
+            if (!!options.onTabClick) options.onTabClick(tabLink);
 
             if (!L.DomUtil.hasClass(tabLink, 'active')) {
               // Remove active links
