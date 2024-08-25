@@ -3,9 +3,9 @@
 ![npm license](https://img.shields.io/npm/l/leaflet.sidepanel)
 ![last commit](https://img.shields.io/github/last-commit/cyclingbyte/Leaflet.SidePanel)
 ![issues open](https://img.shields.io/github/issues/cyclingbyte/Leaflet.SidePanel)![issues closed](https://img.shields.io/github/issues-closed/cyclingbyte/Leaflet.SidePanel?label=)
+
 <!-- ![npm dependents](https://img.shields.io/librariesio/dependents/npm/leaflet.sidepanel) -->
 <!-- ![git stars](https://img.shields.io/github/stars/cyclingbyte/Leaflet.SidePanel) -->
-
 
 # Leaflet.SidePanel
 
@@ -28,9 +28,9 @@ Include the script and css in your html file
 ```html
 <link
   rel="stylesheet"
-  href="https://www.unpkg.com/leaflet.sidepanel@1.0.1/dist/style.css"
+  href="https://www.unpkg.com/leaflet.sidepanel@1.1.0/dist/style.css"
 />
-<script src="https://www.unpkg.com/leaflet.sidepanel@1.0.1/dist/leaflet-sidepanel.umd.js"></script>
+<script src="https://www.unpkg.com/leaflet.sidepanel@1.1.0/dist/leaflet-sidepanel.umd.js"></script>
 ```
 
 ## Requirements
