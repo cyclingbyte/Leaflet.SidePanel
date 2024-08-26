@@ -1,28 +1,27 @@
 import * as L from 'leaflet';
 
-// Extend Leaflet's Control interface to include our custom control
 declare module 'leaflet' {
+  type SidePanelPosition = 'left' | 'right';
+  type SidePanelTabsPosition = 'top' | 'bottom' | 'left' | 'right';
+
   interface SidePanelOptions extends L.ControlOptions {
-    panelPosition?: 'left' | 'right';
+    panelPosition?: SidePanelPosition;
     hasTabs?: boolean;
-    tabsPosition?: 'top' | 'bottom';
+    tabsPosition?: SidePanelTabsPosition;
     darkMode?: boolean;
     pushControls?: boolean;
     startTab?: number | string;
     onTabClick?: (tabLink: HTMLElement) => void;
   }
-
   namespace Control {
     class SidePanel extends L.Control {
       constructor(id: string, options?: SidePanelOptions);
-
-      addTo(map: L.Map): this;
-      toggle(map: L.Map, e?: Event): void;
-      open(map: L.Map): void;
-      close(map: L.Map): void;
+      addTo(map: Map): this;
+      toggle(map: Map, e?: Event): void;
+      open(map: Map): void;
+      close(map: Map): void;
     }
   }
-
   namespace control {
     function sidepanel(
       id: string,

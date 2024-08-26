@@ -17,6 +17,12 @@ class SidePanel extends L.Control {
       onTabClick: undefined,
       ...options, // Merge with default options
     };
+    if (!!options?.position) {
+      const msg =
+        'Leaflet.SidePanel: You cannot set the `position` option. It is controlled by the `panelPosition` option.';
+      if (!!options?.panelPosition) console.warn(msg);
+      else console.error(msg);
+    }
     this._panel = L.DomUtil.get(id)!; // The `!` tells TypeScript we're sure the element exists
     L.setOptions(this, options);
   }
@@ -47,7 +53,7 @@ class SidePanel extends L.Control {
 
   private _initTabs(
     map: L.Map,
-    tabsPosition: 'top' | 'bottom' | undefined
+    tabsPosition?: 'top' | 'bottom' | 'left' | 'right'
   ): void {
     if (typeof tabsPosition === 'string') {
       L.DomUtil.addClass(this._panel, 'tabs-' + tabsPosition);
