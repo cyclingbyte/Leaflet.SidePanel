@@ -116,3 +116,6 @@ const panelRight = L.control
 ## Special Thanks
 
 Special thanks to **[maxwell-ilai](https://github.com/maxwell-ilai 'Maxwell Ilai')** for the original project [maxwell-ilai/Leaflet.SidePanel](https://github.com/maxwell-ilai/Leaflet.SidePanel 'Leaflet.SidePanel by maxwell-ilai')
+
+## Visitors
+<a href="https://info.flagcounter.com/Qvel"><img src="https://s01.flagcounter.com/count2/Qvel/bg_FFFFFF/txt_000000/border_CCCCCC/columns_6/maxflags_18/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
