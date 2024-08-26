@@ -11,7 +11,7 @@ declare module 'leaflet' {
     startTab?: number | string;
     onTabClick?: (tabLink: HTMLElement) => void;
   }
-  
+
   namespace Control {
     class SidePanel extends L.Control {
       constructor(id: string, options?: SidePanelOptions);

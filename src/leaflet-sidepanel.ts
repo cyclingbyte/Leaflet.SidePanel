@@ -204,5 +204,3 @@ L.control.sidepanel = function (
 ): SidePanel {
   return new SidePanel(id, options);
 };
-
-
