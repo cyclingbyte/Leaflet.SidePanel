@@ -5,10 +5,8 @@
     "strict": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
-    "types": [
-      "node",
-    ],
-    "outDir": "dist",
+    "types": ["node"],
+    "outDir": "dist"
   },
   "include": ["src/**/*"]
 }
