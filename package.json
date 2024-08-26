@@ -5,6 +5,7 @@
   "author": "cyclingbyte <cyclingbyte@web.de>",
   "license": "MIT",
   "private": false,
+  "homepage": "https://cyclingbyte.github.io/Leaflet.SidePanel/",
   "type": "module",
   "main": "dist/leaflet-sidepanel.cjs.js",
   "unpkg": "dist/leaflet-sidepanel.umd.js",
@@ -30,10 +31,10 @@
   },
   "keywords": [
     "leaflet",
-    "sidebar",
-    "side-bar",
-    "sidepanel",
-    "side-panel"
+    "leafletjs",
+    "leaflet-plugin",
+    "leaflet-sidebar",
+    "leaflet-sidepanel"
   ],
   "bugs": {
     "url": "https://github.com/cyclingbyte/Leaflet.SidePanel/issues"
