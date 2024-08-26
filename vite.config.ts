@@ -1,7 +1,9 @@
 import { defineConfig } from 'vite';
 import { fileURLToPath, URL } from 'node:url'
+import dts from 'vite-plugin-dts'
 
 export default defineConfig({
+  plugins: [dts()],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -9,10 +11,10 @@ export default defineConfig({
   },
   build: {
     lib: {
-      entry: fileURLToPath(new URL('./src/leaflet-sidepanel.js', import.meta.url)),
+      entry: fileURLToPath(new URL('./src/leaflet-sidepanel.ts', import.meta.url)),
       formats: ['es', 'cjs', 'umd'],
       name: 'leaflet-sidepanel',
-      fileName: (fmt) => `leaflet-sidepanel.${fmt}.js`
+      fileName: (format) => `leaflet-sidepanel.${format}.js`
     },
     rollupOptions: {
       external: ['leaflet'],
