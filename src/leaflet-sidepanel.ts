@@ -149,7 +149,10 @@ class SidePanel extends L.Control {
         .getContainer()
         .querySelector('.leaflet-control-container') as HTMLElement;
 
-      L.DomUtil.addClass(controlsContainer, 'leaflet-anim-control-container');
+      L.DomUtil.addClass(
+        controlsContainer,
+        'leaflet-animate-control-container'
+      );
 
       if (IS_OPENED) {
         L.DomUtil.removeClass(

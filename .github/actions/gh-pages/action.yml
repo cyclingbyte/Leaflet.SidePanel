@@ -1,0 +1,64 @@
+name: 'Upload GitHub Pages artifacts'
+description: 'Uploads multiple files and directories to GitHub Pages with specified targets'
+author: 'GitHub'
+inputs:
+  items:
+    description: "A JSON list of objects with 'path' and 'target' properties."
+    required: true
+  retention-days:
+    description: 'Duration after which artifact will expire in days.'
+    required: false
+    default: '1'
+outputs:
+  artifact_id:
+    description: 'The ID of the artifact that was uploaded.'
+    value: ${{ steps.upload-artifact.outputs.artifact-id }}
+
+runs:
+  using: composite
+  steps:
+    - name: Prepare temporary directory
+      shell: bash
+      run: |
+        mkdir -p ${{ runner.temp }}/artifacts
+        echo "Temporary directory created: ${{ runner.temp }}/artifacts"
+
+    - name: Archive files and directories
+      shell: bash
+      run: |
+        echo "Processing items..."
+        items=$(echo '${{ inputs.items }}' | jq -c '.[]')
+        for item in $items; do
+          path=$(echo "$item" | jq -r '.path')
+          target=$(echo "$item" | jq -r '.target')
+          echo "Path: $path, Target: $target"
+          
+          if [ -d "$path" ]; then
+            echo "Processing directory $path"
+            mkdir -p "$RUNNER_TEMP/artifacts/$target"
+            # Remove symbolic and hard links, and copy the rest
+            find "$path" -type l -exec rm {} \;  # Remove symbolic links
+            cp -r "$path"/* "$RUNNER_TEMP/artifacts/$target"
+          elif [ -f "$path" ]; then
+            echo "Processing file $path"
+            mkdir -p "$(dirname "$RUNNER_TEMP/artifacts/$target")"
+            cp "$path" "$RUNNER_TEMP/artifacts/$target"
+          else
+            echo "Error: Path '$path' does not exist."
+            exit 1
+          fi
+        done
+        echo "Finished processing."
+
+    - name: List artifact files
+      shell: bash
+      run: ls -lRa ${{ runner.temp }}/artifacts
+
+    - name: Upload artifacts
+      id: upload-artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: github-pages
+        path: ${{ runner.temp }}/artifacts
+        retention-days: ${{ inputs.retention-days }}
+        if-no-files-found: error

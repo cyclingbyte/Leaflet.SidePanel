@@ -5,6 +5,7 @@
 - feat: add typescript support
 - feat: new option `onToggle`
 - chore: improve docu
+- chore: change gh-pages upload
 - chore: change prettier scope
 
 ## v1.1.0 (2024-08-25)
