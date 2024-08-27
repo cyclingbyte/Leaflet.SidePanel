@@ -1,10 +1,10 @@
-![npm version](https://img.shields.io/npm/v/leaflet.sidepanel)
-![npm downloads](https://img.shields.io/npm/dt/leaflet.sidepanel)
-![npm license](https://img.shields.io/npm/l/leaflet.sidepanel)
+[![npm version](https://img.shields.io/npm/v/leaflet.sidepanel)](https://www.npmjs.com/package/leaflet.sidepanel)
+[![npm downloads](https://img.shields.io/npm/dt/leaflet.sidepanel)](https://www.npmjs.com/package/leaflet.sidepanel)
+[![npm license](https://img.shields.io/npm/l/leaflet.sidepanel)](https://github.com/cyclingbyte/vue-leaflet-sidepanel?tab=MIT-1-ov-file#readme)
 ![last commit](https://img.shields.io/github/last-commit/cyclingbyte/Leaflet.SidePanel)
+[![npm dependents](https://img.shields.io/librariesio/dependents/npm/leaflet.sidepanel)](https://www.npmjs.com/package/leaflet.sidepanel?activeTab=dependents)
 ![issues open](https://img.shields.io/github/issues/cyclingbyte/Leaflet.SidePanel)![issues closed](https://img.shields.io/github/issues-closed/cyclingbyte/Leaflet.SidePanel?label=)
 
-<!-- ![npm dependents](https://img.shields.io/librariesio/dependents/npm/leaflet.sidepanel) -->
 <!-- ![git stars](https://img.shields.io/github/stars/cyclingbyte/Leaflet.SidePanel) -->
 
 # Leaflet.SidePanel
@@ -13,17 +13,25 @@ Slide side panel plugin for [Leaflet](https://leafletjs.com/ 'Leaflet Homepage')
 
 This repository is a copy of [maxwell-ilai/Leaflet.SidePanel](https://github.com/maxwell-ilai/Leaflet.SidePanel 'Leaflet.SidePanel by maxwell-ilai')
 
+## Prerequirements
+
+- [leaflet](https://github.com/Leaflet/Leaflet) (v1.0.0 or higher)
+  (Tested with 1.8.0)
+
 ## Installation
 
-### NPM
-
 ```sh
-npm i Leaflet.SidePanel
+# NPM
+npm i leaflet.sidepanel
+
+# yarn
+yarn add leaflet.sidepanel
+
+# pnpm
+pnpm i leaflet.sidepanel
 ```
 
-### Browser | HTML
-
-Include the script and css in your html file
+Or include the script and css in your html file
 
 ```html
 <link
@@ -32,11 +40,6 @@ Include the script and css in your html file
 />
 <script src="https://www.unpkg.com/leaflet.sidepanel@1.1.0/dist/leaflet-sidepanel.umd.js"></script>
 ```
-
-## Requirements
-
-- [leaflet](https://github.com/Leaflet/Leaflet) (v1.0.0 or higher)
-  (Tested with 1.8.0)
 
 ## Options
 
@@ -81,14 +84,8 @@ const panelRight = L.control
       <ul class="sidepanel-tabs">
         <li class="sidepanel-tab">
           <a href="#" class="sidebar-tab-link" role="tab" data-tab-link="tab-1">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              fill="currentColor"
-            >
-              <path fill-rule="evenodd" />
-            </svg>
+            <!-- [You can also use images / icons] -->
+            Tab 1
           </a>
         </li>
         <!-- [...] -->
@@ -113,9 +110,10 @@ const panelRight = L.control
 </div>
 ```
 
-## Special Thanks
+## Credits
 
 Special thanks to **[maxwell-ilai](https://github.com/maxwell-ilai 'Maxwell Ilai')** for the original project [maxwell-ilai/Leaflet.SidePanel](https://github.com/maxwell-ilai/Leaflet.SidePanel 'Leaflet.SidePanel by maxwell-ilai')
 
 ## Visitors
-<a href="https://info.flagcounter.com/Qvel"><img src="https://s01.flagcounter.com/count2/Qvel/bg_FFFFFF/txt_000000/border_CCCCCC/columns_6/maxflags_18/viewers_0/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+
+[![Flag Counter](https://s01.flagcounter.com/count2/Qvel/bg_FFFFFF/txt_000000/border_CCCCCC/columns_6/maxflags_18/viewers_0/labels_0/pageviews_1/flags_0/percent_0/)](https://info.flagcounter.com/Qvel)
