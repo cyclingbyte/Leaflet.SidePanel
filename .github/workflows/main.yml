@@ -9,11 +9,11 @@ on:
       - main
 
 jobs:
-  lint-and-format:
+  merge-checks:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        job: ['lint', 'format:check']
+        job: ['lint', 'format:check', 'type-check']
 
     steps:
       - name: Checkout repository
