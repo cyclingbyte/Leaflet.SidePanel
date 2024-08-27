@@ -2,24 +2,9 @@
   "editor.formatOnSave": true,
   "files.autoSave": "onFocusChange",
   "editor.formatOnPaste": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": "explicit"
-  },
-  "[javascript]": {
+  "[javascript][json][html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.tabSize": 2,
+    "editor.tabSize": 2
   },
-  "[json]": {
-    "editor.tabSize": 2,
-  },
-  "[html]": {
-    "editor.tabSize": 2,
-  },
-  "prettier.configPath": ".prettierrc.json",
-  "prettier.semi": true,
-  "prettier.tabWidth": 2,
-  "prettier.singleQuote": true,
-  "prettier.printWidth": 80,
-  "prettier.trailingComma": "es5",
-  "prettier.vueIndentScriptAndStyle": true
+  "prettier.configPath": ".prettierrc.json"
 }
