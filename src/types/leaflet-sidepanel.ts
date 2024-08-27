@@ -12,12 +12,14 @@ declare module 'leaflet' {
     pushControls?: boolean;
     startTab?: number | string;
     onTabClick?: (tabLink: HTMLElement) => void;
+    onToggle?: (opened: boolean) => void;
   }
   namespace Control {
     class SidePanel extends L.Control {
       constructor(id: string, options?: SidePanelOptions);
       addTo(map: Map): this;
       toggle(map: Map, e?: Event): void;
+      isOpened(): boolean;
       open(map: Map): void;
       close(map: Map): void;
     }

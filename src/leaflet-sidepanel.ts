@@ -14,7 +14,8 @@ class SidePanel extends L.Control {
       darkMode: false,
       pushControls: false,
       startTab: 1,
-      onTabClick: undefined,
+      onTabClick: () => {},
+      onToggle: () => {},
       ...options, // Merge with default options
     };
     if (!!options?.position) {
@@ -99,8 +100,6 @@ class SidePanel extends L.Control {
         (e: Event) => {
           L.DomEvent.preventDefault(e);
 
-          if (this.options.onTabClick) this.options.onTabClick(tabLink);
-
           if (!L.DomUtil.hasClass(tabLink, 'active')) {
             tabsLinks.forEach((link) => L.DomUtil.removeClass(link, 'active'));
             L.DomUtil.addClass(tabLink, 'active');
@@ -113,6 +112,8 @@ class SidePanel extends L.Control {
               }
             });
           }
+
+          this.options.onTabClick!(tabLink); // `!` 'cause we have a default value
         },
         tabLink
       );
@@ -121,7 +122,7 @@ class SidePanel extends L.Control {
     this._toggleButton(map);
   }
 
-  toggle(map: L.Map, _e?: Event): void {
+  toggle(map: L.Map | HTMLElement, _e?: Event): void {
     let IS_OPENED = true;
     const opened = L.DomUtil.hasClass(this._panel, 'opened');
     const closed = L.DomUtil.hasClass(this._panel, 'closed');
@@ -145,9 +146,11 @@ class SidePanel extends L.Control {
           'Leaflet.SidePanel: You must pass the map instance to the toggle method when using pushControls option.'
         );
       }
-      const controlsContainer = map
-        .getContainer()
-        .querySelector('.leaflet-control-container') as HTMLElement;
+      const mapContainer =
+        map instanceof HTMLElement ? map : map.getContainer();
+      const controlsContainer = mapContainer.querySelector(
+        '.leaflet-control-container'
+      ) as HTMLElement;
 
       L.DomUtil.addClass(controlsContainer, 'leaflet-anim-control-container');
 
@@ -171,16 +174,20 @@ class SidePanel extends L.Control {
         );
       }
     }
+
+    this.options.onToggle!(IS_OPENED); // `!` 'cause we have a default value
+  }
+
+  isOpened(): boolean {
+    return L.DomUtil.hasClass(this._panel, 'opened');
   }
 
   open(map: L.Map): void {
-    const opened = L.DomUtil.hasClass(this._panel, 'opened');
-    if (!opened) this.toggle(map);
+    if (!this.isOpened()) this.toggle(map);
   }
 
   close(map: L.Map): void {
-    const closed = L.DomUtil.hasClass(this._panel, 'closed');
-    if (!closed) this.toggle(map);
+    if (this.isOpened()) this.toggle(map);
   }
 
   private _toggleButton(map: L.Map): void {
