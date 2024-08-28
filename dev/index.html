@@ -558,14 +558,16 @@
           startTab: 'tab-5',
         })
         .addTo(map);
-      const sidepanelRight = L.control.sidepanel('mySidepanelRight', {
-        panelPosition: 'right',
-        tabsPosition: 'top',
-        pushControls: true,
-        darkMode: true,
-        startTab: 2,
-      });
-      sidepanelRight.addTo(map);
+      const sidepanelRight = L.control
+        .sidepanel('mySidepanelRight', {
+          panelPosition: 'right',
+          tabsPosition: 'top',
+          pushControls: true,
+          darkMode: true,
+          startTab: 2,
+        })
+        .addTo(map);
+      sidepanelRight.open();
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution:
