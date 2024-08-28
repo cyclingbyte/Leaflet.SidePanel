@@ -5,10 +5,6 @@ inputs:
   items:
     description: "A JSON list of objects with 'path' and 'target' properties."
     required: true
-  retention-days:
-    description: 'Duration after which artifact will expire in days.'
-    required: false
-    default: '1'
 outputs:
   artifact_id:
     description: 'The ID of the artifact that was uploaded.'
@@ -60,5 +56,5 @@ runs:
       with:
         name: github-pages
         path: ${{ runner.temp }}/artifacts
-        retention-days: ${{ inputs.retention-days }}
+        retention-days: 1
         if-no-files-found: error
