@@ -645,7 +645,7 @@ $toggle-button-arrow-opacity: 1;
 }
 
 // Animate control
-.leaflet-anim-control-container {
+.leaflet-animate-control-container {
   &.left-opened .leaflet-left {
     left: $panel-width;
     transition: left 0.5s ease;

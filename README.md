@@ -3,7 +3,7 @@
 [![npm license](https://img.shields.io/npm/l/leaflet.sidepanel)](https://github.com/cyclingbyte/vue-leaflet-sidepanel?tab=MIT-1-ov-file#readme)
 ![last commit](https://img.shields.io/github/last-commit/cyclingbyte/Leaflet.SidePanel)
 [![npm dependents](https://img.shields.io/librariesio/dependents/npm/leaflet.sidepanel)](https://www.npmjs.com/package/leaflet.sidepanel?activeTab=dependents)
-![issues open](https://img.shields.io/github/issues/cyclingbyte/Leaflet.SidePanel)![issues closed](https://img.shields.io/github/issues-closed/cyclingbyte/Leaflet.SidePanel?label=)
+<img src="./examples/assests/language-typescript.svg" height="24px" />
 
 <!-- ![git stars](https://img.shields.io/github/stars/cyclingbyte/Leaflet.SidePanel) -->
 
