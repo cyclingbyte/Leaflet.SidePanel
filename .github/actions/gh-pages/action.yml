@@ -34,6 +34,7 @@ runs:
             mkdir -p "$RUNNER_TEMP/artifacts/$target"
             # Remove symbolic and hard links, and copy the rest
             find "$path" -type l -exec rm {} \;  # Remove symbolic links
+            find "$path" -type f -links +1 -exec rm {} \;  # Remove hard links
             cp -r "$path"/* "$RUNNER_TEMP/artifacts/$target"
           elif [ -f "$path" ]; then
             echo "Processing file $path"
@@ -44,6 +45,14 @@ runs:
             exit 1
           fi
         done
+
+        echo "Calculating total size of artifacts..."
+        total_size=$(du -sb $RUNNER_TEMP/artifacts | cut -f1)
+        if [ $total_size -gt 10000000000 ]; then
+          echo "Error: The total size of artifacts exceeds 10GB."
+          exit 1
+        fi
+
         echo "Finished processing."
 
     - name: List artifact files
