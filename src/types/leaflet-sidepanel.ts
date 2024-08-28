@@ -18,10 +18,10 @@ declare module 'leaflet' {
     class SidePanel extends L.Control {
       constructor(id: string, options?: SidePanelOptions);
       addTo(map: Map): this;
-      toggle(map: Map, e?: Event): void;
+      toggle(e?: Event): void;
       isOpened(): boolean;
-      open(map: Map): void;
-      close(map: Map): void;
+      open(): void;
+      close(): void;
     }
   }
   namespace control {
