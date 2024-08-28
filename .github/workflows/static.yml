@@ -37,14 +37,9 @@ jobs:
         run: npm install && npm run build
 
       - name: Upload artifacts
-        uses: ./.github/actions/gh-pages
+        uses: actions/upload-pages-artifact@v3
         with:
-          items: |
-            [
-              {"path": "./examples", "target": "."},
-              {"path": "./dist/leaflet-sidepanel.umd.js", "target": "dist/leaflet-sidepanel.umd.js"},
-              {"path": "./dist/style.css", "target": "dist/style.css"}
-            ]
+          path: './examples'
 
       - name: Deploy to GitHub Pages
         id: deployment
