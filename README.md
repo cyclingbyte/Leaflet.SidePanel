@@ -13,6 +13,10 @@ Slide side panel plugin for [Leaflet](https://leafletjs.com/ 'Leaflet Homepage')
 
 This repository is a copy of [maxwell-ilai/Leaflet.SidePanel](https://github.com/maxwell-ilai/Leaflet.SidePanel 'Leaflet.SidePanel by maxwell-ilai')
 
+## Demo
+
+You can find a demo [here](https://cyclingbyte.github.io/Leaflet.SidePanel/ 'Demo for Leaflet.SidePanel')
+
 ## Prerequirements
 
 - [leaflet](https://github.com/Leaflet/Leaflet) (v1.0.0 or higher)
@@ -47,12 +51,9 @@ Or include the script and css in your html file
 - hasTabs: _true (default)_ | false [boolean]
 - tabsPosition: _'top' (default)_ | 'right' | 'bottom' | 'left' [string]
 - darkMode: true | _false (default)_ [boolean]
-- pushControls: true | _false (default)_ [boolean]
-- startTab: _1 (default)_ [number | string]
-
-## Demo
-
-You can find a demo [here](https://cyclingbyte.github.io/Leaflet.SidePanel/ 'Demo for Leaflet.SidePanel')
+- pushControls: true | _false (default)_ [boolean]<br />
+  Shifts the map controls (like zoom) when the side panels open, to keep them visible and usabe
+- defaultTab: _1 (default)_ [number | string]
 
 ## Example
 
@@ -70,7 +71,7 @@ const panelRight = L.control
     tabsPosition: 'top',
     pushControls: true,
     darkMode: true,
-    startTab: 'tab-5',
+    defaultTab: 'tab-5',
   })
   .addTo(map);
 ```

@@ -14,7 +14,7 @@ class SidePanel extends L.Control {
       tabsPosition: 'top',
       darkMode: false,
       pushControls: false,
-      startTab: 1,
+      defaultTab: 1,
       onTabClick: () => {},
       onToggle: () => {},
       ...options, // Merge with default options
@@ -68,29 +68,29 @@ class SidePanel extends L.Control {
     ) as NodeListOf<HTMLElement>;
 
     tabsLinks.forEach((tabLink, tabIndex) => {
-      let startTab: HTMLElement | undefined;
+      let defaultTab: HTMLElement | undefined;
       let startContent: HTMLElement | undefined;
 
       if (
-        typeof this.options.startTab === 'number' &&
-        this.options.startTab - 1 === tabIndex
+        typeof this.options.defaultTab === 'number' &&
+        this.options.defaultTab - 1 === tabIndex
       ) {
-        startTab = tabLink;
+        defaultTab = tabLink;
         startContent = tabsContents[tabIndex];
       }
 
       if (
-        typeof this.options.startTab === 'string' &&
-        this.options.startTab === tabLink.dataset.tabLink
+        typeof this.options.defaultTab === 'string' &&
+        this.options.defaultTab === tabLink.dataset.tabLink
       ) {
-        startTab = tabLink;
+        defaultTab = tabLink;
         startContent = this._panel.querySelector(
-          `.sidepanel-tab-content[data-tab-content="${this.options.startTab}"]`
+          `.sidepanel-tab-content[data-tab-content="${this.options.defaultTab}"]`
         ) as HTMLElement;
       }
 
-      if (startTab && !L.DomUtil.hasClass(startTab, 'active')) {
-        L.DomUtil.addClass(startTab, 'active');
+      if (defaultTab && !L.DomUtil.hasClass(defaultTab, 'active')) {
+        L.DomUtil.addClass(defaultTab, 'active');
         L.DomUtil.addClass(startContent!, 'active');
       }
 

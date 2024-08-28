@@ -6,7 +6,7 @@ L.control.zoom({ position: 'topleft' }).addTo(map);
 
 const sidepanelLeft = L.control.sidepanel('mySidepanelLeft', {
   tabsPosition: 'left',
-  startTab: 'tab-4',
+  defaultTab: 'tab-4',
   pushControls: true,
 });
 sidepanelLeft.addTo(map);
@@ -16,7 +16,7 @@ const sidepanelRight = L.control.sidepanel('mySidepanelRight', {
   tabsPosition: 'top',
   pushControls: true,
   darkMode: true,
-  startTab: 2,
+  defaultTab: 2,
 });
 sidepanelRight.addTo(map);
 

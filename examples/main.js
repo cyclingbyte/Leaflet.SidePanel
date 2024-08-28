@@ -7,6 +7,7 @@ L.control.zoom({ position: 'topleft' }).addTo(map);
 
 const sidepanelLeft = L.control.sidepanel('mySidepanelLeft', {
   tabsPosition: 'left',
+  pushControls: true,
 });
 sidepanelLeft.addTo(map);
 
@@ -17,6 +18,7 @@ const sidepanelRight = L.control.sidepanel('mySidepanelRight', {
   darkMode: true,
 });
 sidepanelRight.addTo(map);
+sidepanelRight.open(map);
 
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution:

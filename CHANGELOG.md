@@ -5,8 +5,10 @@
 - feat: add typescript support
 - feat: new option `onToggle`
 - chore: improve docu
-- chore: change gh-pages upload
 - chore: change prettier scope
+- chore: ⚠️ BREAKING ⚠️ save map instance in panel<br>
+  To update your code you have remove the map from `toggle`, `open` and `close` calls
+- chore: ⚠️ BREAKING ⚠️ rename startTab to defaultTab
 
 ## v1.1.0 (2024-08-25)
 
