@@ -4,6 +4,7 @@ import './leaflet-sidepanel.scss';
 class SidePanel extends L.Control {
   public options: L.SidePanelOptions;
   private _panel: HTMLElement;
+  private _map?: L.Map; // Optional 'cause it's initialized in `addTo`
 
   constructor(id: string, options?: L.SidePanelOptions) {
     super(options);
@@ -14,7 +15,8 @@ class SidePanel extends L.Control {
       darkMode: false,
       pushControls: false,
       startTab: 1,
-      onTabClick: undefined,
+      onTabClick: () => {},
+      onToggle: () => {},
       ...options, // Merge with default options
     };
     if (!!options?.position) {
@@ -28,6 +30,8 @@ class SidePanel extends L.Control {
   }
 
   addTo(map: L.Map): this {
+    this._map = map;
+
     L.DomUtil.addClass(this._panel, 'sidepanel-' + this.options.panelPosition);
 
     if (this.options.darkMode) {
@@ -38,23 +42,20 @@ class SidePanel extends L.Control {
     L.DomEvent.disableClickPropagation(this._panel);
 
     if (this.options.hasTabs) {
-      this._initTabs(map, this.options.tabsPosition);
+      this._initTabs(this.options.tabsPosition);
     } else {
-      this._initContent(map);
+      this._initContent();
     }
 
     return this;
   }
 
   // Define the private methods as part of the class
-  private _initContent(map: L.Map): void {
-    this._toggleButton(map);
+  private _initContent(): void {
+    this._toggleButton();
   }
 
-  private _initTabs(
-    map: L.Map,
-    tabsPosition?: 'top' | 'bottom' | 'left' | 'right'
-  ): void {
+  private _initTabs(tabsPosition?: 'top' | 'bottom' | 'left' | 'right'): void {
     if (typeof tabsPosition === 'string') {
       L.DomUtil.addClass(this._panel, 'tabs-' + tabsPosition);
     }
@@ -99,8 +100,6 @@ class SidePanel extends L.Control {
         (e: Event) => {
           L.DomEvent.preventDefault(e);
 
-          if (this.options.onTabClick) this.options.onTabClick(tabLink);
-
           if (!L.DomUtil.hasClass(tabLink, 'active')) {
             tabsLinks.forEach((link) => L.DomUtil.removeClass(link, 'active'));
             L.DomUtil.addClass(tabLink, 'active');
@@ -113,15 +112,17 @@ class SidePanel extends L.Control {
               }
             });
           }
+
+          this.options.onTabClick!(tabLink); // `!` 'cause we have a default value
         },
         tabLink
       );
     });
 
-    this._toggleButton(map);
+    this._toggleButton();
   }
 
-  toggle(map: L.Map, _e?: Event): void {
+  toggle(_e?: Event): void {
     let IS_OPENED = true;
     const opened = L.DomUtil.hasClass(this._panel, 'opened');
     const closed = L.DomUtil.hasClass(this._panel, 'closed');
@@ -140,53 +141,61 @@ class SidePanel extends L.Control {
     }
 
     if (this.options.pushControls) {
-      if (!map) {
-        console.error(
-          'Leaflet.SidePanel: You must pass the map instance to the toggle method when using pushControls option.'
-        );
-      }
-      const controlsContainer = map
-        .getContainer()
-        .querySelector('.leaflet-control-container') as HTMLElement;
+      const map = this._map;
+      if (map) {
+        const mapContainer =
+          map instanceof HTMLElement ? map : map.getContainer();
+        const controlsContainer = mapContainer.querySelector(
+          '.leaflet-control-container'
+        ) as HTMLElement;
 
-      L.DomUtil.addClass(
-        controlsContainer,
-        'leaflet-animate-control-container'
-      );
-
-      if (IS_OPENED) {
-        L.DomUtil.removeClass(
-          controlsContainer,
-          this.options.panelPosition + '-closed'
-        );
         L.DomUtil.addClass(
           controlsContainer,
-          this.options.panelPosition + '-opened'
+          'leaflet-animate-control-container'
         );
+
+        if (IS_OPENED) {
+          L.DomUtil.removeClass(
+            controlsContainer,
+            this.options.panelPosition + '-closed'
+          );
+          L.DomUtil.addClass(
+            controlsContainer,
+            this.options.panelPosition + '-opened'
+          );
+        } else {
+          L.DomUtil.removeClass(
+            controlsContainer,
+            this.options.panelPosition + '-opened'
+          );
+          L.DomUtil.addClass(
+            controlsContainer,
+            this.options.panelPosition + '-closed'
+          );
+        }
       } else {
-        L.DomUtil.removeClass(
-          controlsContainer,
-          this.options.panelPosition + '-opened'
-        );
-        L.DomUtil.addClass(
-          controlsContainer,
-          this.options.panelPosition + '-closed'
+        console.error(
+          'Leaflet.SidePanel: You must add the SidePanel to the map before setting the `pushControls` option.'
         );
       }
     }
+
+    this.options.onToggle!(IS_OPENED); // `!` 'cause we have a default value
   }
 
-  open(map: L.Map): void {
-    const opened = L.DomUtil.hasClass(this._panel, 'opened');
-    if (!opened) this.toggle(map);
+  isOpened(): boolean {
+    return L.DomUtil.hasClass(this._panel, 'opened');
   }
 
-  close(map: L.Map): void {
-    const closed = L.DomUtil.hasClass(this._panel, 'closed');
-    if (!closed) this.toggle(map);
+  open(): void {
+    if (!this.isOpened()) this.toggle();
   }
 
-  private _toggleButton(map: L.Map): void {
+  close(): void {
+    if (this.isOpened()) this.toggle();
+  }
+
+  private _toggleButton(): void {
     const container = this._panel.querySelector(
       '.sidepanel-toggle-container'
     ) as HTMLElement;
@@ -198,7 +207,7 @@ class SidePanel extends L.Control {
       button,
       'click',
       (_e: Event) => {
-        this.toggle(map, _e);
+        this.toggle(_e);
       },
       container
     );
