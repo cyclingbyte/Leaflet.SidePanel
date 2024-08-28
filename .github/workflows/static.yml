@@ -28,14 +28,6 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '21'
-
-      - name: Install dependencies and build
-        run: npm install && npm run build
-
       - name: Upload artifacts
         uses: actions/upload-pages-artifact@v3
         with:
