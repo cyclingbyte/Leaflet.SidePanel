@@ -1,8 +1,8 @@
 # Leaflet.SidePanel Changelog
 
-## v1.2.0 (2024-08-29) <img src="./examples/assests/language-typescript.svg" height="20px" />
+## v1.2.0 (2024-08-29) <img src="./examples/assets/language-typescript.svg" height="20px" />
 
-- feat: add typescript <img src="./examples/assests/language-typescript.svg" height="16px" /> support
+- feat: add typescript <img src="./examples/assets/language-typescript.svg" height="16px" /> support
 - feat: new option `onToggle`
 - chore: improve docu
 - chore: change prettier scope
