@@ -1,6 +1,6 @@
 {
   "name": "leaflet.sidepanel",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Slide side panel plugin for Leaflet",
   "author": "cyclingbyte <cyclingbyte@web.de>",
   "license": "MIT",
@@ -8,12 +8,20 @@
   "homepage": "https://cyclingbyte.github.io/Leaflet.SidePanel/",
   "type": "module",
   "main": "dist/leaflet-sidepanel.cjs.js",
-  "unpkg": "dist/leaflet-sidepanel.umd.js",
+  "browser": "dist/leaflet-sidepanel.umd.js",
   "module": "dist/leaflet-sidepanel.es.js",
   "style": "dist/style.css",
   "types": "dist/types/leaflet-sidepanel.d.ts",
+  "files": [
+    "dist/",
+    "CHANGELOG.md"
+  ],
   "directories": {
     "example": "examples"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyclingbyte/Leaflet.SidePanel.git"
   },
   "scripts": {
     "build": "vite build",
@@ -24,17 +32,6 @@
     "format": "prettier --write .",
     "format:check": "prettier --check . || (echo 'Code is not formatted' && exit 1)"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cyclingbyte/Leaflet.SidePanel.git"
-  },
-  "keywords": [
-    "leaflet",
-    "leafletjs",
-    "leaflet-plugin",
-    "leaflet-sidebar",
-    "leaflet-sidepanel"
-  ],
   "bugs": {
     "url": "https://github.com/cyclingbyte/Leaflet.SidePanel/issues"
   },
@@ -51,8 +48,11 @@
     "vite": "^5.4.2",
     "vite-plugin-dts": "^4.0.3"
   },
-  "files": [
-    "dist/",
-    "CHANGELOG.md"
+  "keywords": [
+    "leaflet",
+    "leafletjs",
+    "leaflet-plugin",
+    "leaflet-sidebar",
+    "leaflet-sidepanel"
   ]
 }

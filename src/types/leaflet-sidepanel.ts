@@ -10,7 +10,7 @@ declare module 'leaflet' {
     tabsPosition?: SidePanelTabsPosition;
     darkMode?: boolean;
     pushControls?: boolean;
-    startTab?: number | string;
+    defaultTab?: number | string;
     onTabClick?: (tabLink: HTMLElement) => void;
     onToggle?: (opened: boolean) => void;
   }

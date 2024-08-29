@@ -34,20 +34,6 @@ body:
       placeholder: 'Instead, the following should happen: ...'
     validations:
       required: false
-  - type: dropdown
-    id: browser
-    attributes:
-      label: Browser
-      options:
-        - Firefox
-        - Chrome
-        - Opera
-        - Safari
-        - Edge
-        - Other (please specify in additional context)
-      multiple: true
-    validations:
-      required: true
   - type: input
     id: version
     attributes:
