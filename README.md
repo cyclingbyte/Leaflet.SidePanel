@@ -41,9 +41,9 @@ Or include the script and css in your html file
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/leaflet.sidepanel/dist/style.css"
+  href="https://cdn.jsdelivr.net/npm/leaflet.sidepanel@1.2.0/dist/style.css"
 />
-<script src="https://cdn.jsdelivr.net/npm/leaflet.sidepanel"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.sidepanel@1.2.0"></script>
 ```
 
 ## Options
