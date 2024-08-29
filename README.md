@@ -5,6 +5,7 @@
 [![npm dependents](https://img.shields.io/librariesio/dependents/npm/leaflet.sidepanel)](https://www.npmjs.com/package/leaflet.sidepanel?activeTab=dependents)
 <img src="./examples/assets/language-typescript.svg" height="24px" />
 
+<!-- [![jsdelivr downloads](https://data.jsdelivr.com/v1/package/npm/leaflet.sidepanel/badge?style=rounded)](https://www.jsdelivr.com/package/npm/leaflet.sidepanel) -->
 <!-- ![git stars](https://img.shields.io/github/stars/cyclingbyte/Leaflet.SidePanel) -->
 
 # Leaflet.SidePanel
@@ -40,9 +41,9 @@ Or include the script and css in your html file
 ```html
 <link
   rel="stylesheet"
-  href="https://www.unpkg.com/leaflet.sidepanel@1.2.0/dist/style.css"
+  href="https://cdn.jsdelivr.net/npm/leaflet.sidepanel/dist/style.css"
 />
-<script src="https://www.unpkg.com/leaflet.sidepanel@1.2.0/dist/leaflet-sidepanel.umd.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/leaflet.sidepanel"></script>
 ```
 
 ## Options
@@ -55,9 +56,9 @@ Or include the script and css in your html file
   Shifts the map controls (like zoom) when the side panels open, to keep them visible and usabe
 - defaultTab: _1 (default)_ [number | string]
 
-## Example
+## Usage
 
-**_Javascript_**
+### Javascript
 
 ```javascript
 import L from 'leaflet';
@@ -76,7 +77,7 @@ const panelRight = L.control
   .addTo(map);
 ```
 
-**_Html_**
+### Html
 
 ```html
 <div id="panelID" class="sidepanel" aria-label="side panel" aria-hidden="false">
@@ -110,6 +111,11 @@ const panelRight = L.control
   </div>
 </div>
 ```
+
+### Vue
+
+There is a Vue wrapper available on [vue-leaflet-sidepanel](https://github.com/cyclingbyte/vue-leaflet-sidepanel)<br />
+This wrapper was build for Vue 3, there were no tests with Vue 2
 
 ## Credits
 

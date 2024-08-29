@@ -8,7 +8,7 @@
   "homepage": "https://cyclingbyte.github.io/Leaflet.SidePanel/",
   "type": "module",
   "main": "dist/leaflet-sidepanel.cjs.js",
-  "unpkg": "dist/leaflet-sidepanel.umd.js",
+  "browser": "dist/leaflet-sidepanel.umd.js",
   "module": "dist/leaflet-sidepanel.es.js",
   "style": "dist/style.css",
   "types": "dist/types/leaflet-sidepanel.d.ts",
