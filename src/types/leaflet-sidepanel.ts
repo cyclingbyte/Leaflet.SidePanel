@@ -11,6 +11,7 @@ declare module 'leaflet' {
     darkMode?: boolean;
     pushControls?: boolean;
     defaultTab?: number | string;
+    size?: string;
     onTabClick?: (tabLink: HTMLElement) => void;
     onToggle?: (opened: boolean) => void;
   }

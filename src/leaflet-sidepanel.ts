@@ -15,6 +15,7 @@ class SidePanel extends L.Control {
       darkMode: false,
       pushControls: false,
       defaultTab: 1,
+      size: '400px',
       onTabClick: () => {},
       onToggle: () => {},
       ...options, // Merge with default options
@@ -26,6 +27,9 @@ class SidePanel extends L.Control {
       else console.error(msg);
     }
     this._panel = L.DomUtil.get(id)!; // The `!` tells TypeScript we're sure the element exists
+    this._panel.style.setProperty('--panel-width', this.options.size!); // `!` 'cause we have a default value
+
+    // Set the options
     L.setOptions(this, options);
   }
 
@@ -40,6 +44,26 @@ class SidePanel extends L.Control {
 
     L.DomEvent.disableScrollPropagation(this._panel);
     L.DomEvent.disableClickPropagation(this._panel);
+
+    if (!!this.options.pushControls) {
+      const map = this._map;
+      if (!!map) {
+        const mapContainer =
+          map instanceof HTMLElement ? map : map.getContainer();
+        const controlsContainer = mapContainer.querySelector(
+          '.leaflet-control-container'
+        ) as HTMLElement;
+
+        L.DomUtil.addClass(
+          controlsContainer,
+          'leaflet-animate-control-container'
+        );
+        controlsContainer.style.setProperty(
+          `--panel-width-${this.options.panelPosition}`,
+          this.options.size!
+        ); // `!` 'cause we have a default value
+      }
+    }
 
     if (this.options.hasTabs) {
       this._initTabs(this.options.tabsPosition);
@@ -142,17 +166,12 @@ class SidePanel extends L.Control {
 
     if (this.options.pushControls) {
       const map = this._map;
-      if (map) {
+      if (!!map) {
         const mapContainer =
           map instanceof HTMLElement ? map : map.getContainer();
         const controlsContainer = mapContainer.querySelector(
           '.leaflet-control-container'
         ) as HTMLElement;
-
-        L.DomUtil.addClass(
-          controlsContainer,
-          'leaflet-animate-control-container'
-        );
 
         if (IS_OPENED) {
           L.DomUtil.removeClass(
