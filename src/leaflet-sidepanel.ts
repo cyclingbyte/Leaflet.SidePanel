@@ -7,6 +7,33 @@ class SidePanel extends L.Control {
   private _map?: L.Map; // Optional 'cause it's initialized in `addTo`
 
   constructor(id: string, options?: L.SidePanelOptions) {
+    // Check for invalid options
+    options = options || {};
+    if (!!options.position) {
+      const msg =
+        'Leaflet.SidePanel: You cannot set the `position` option. It is controlled by the `panelPosition` option.';
+      if (!!options.panelPosition) console.warn(msg);
+      else console.error(msg);
+    }
+    if (
+      options.panelPosition &&
+      !['left', 'right'].includes(options.panelPosition!)
+    ) {
+      console.error(
+        'Leaflet.SidePanel: The `panelPosition` option must be either "left" or "right".'
+      );
+      options.panelPosition = 'left'; // Default value
+    }
+    if (
+      options.tabsPosition &&
+      !['top', 'bottom', 'left', 'right'].includes(options.tabsPosition!)
+    ) {
+      console.error(
+        'Leaflet.SidePanel: The `tabsPosition` option must be either "top", "bottom", "left", or "right".'
+      );
+      options.tabsPosition = 'top'; // Default value
+    }
+    // Initialize the panel
     super(options);
     this.options = {
       panelPosition: 'left',
@@ -19,12 +46,6 @@ class SidePanel extends L.Control {
       onToggle: () => {},
       ...options, // Merge with default options
     };
-    if (!!options?.position) {
-      const msg =
-        'Leaflet.SidePanel: You cannot set the `position` option. It is controlled by the `panelPosition` option.';
-      if (!!options?.panelPosition) console.warn(msg);
-      else console.error(msg);
-    }
     this._panel = L.DomUtil.get(id)!; // The `!` tells TypeScript we're sure the element exists
     L.setOptions(this, options);
   }
@@ -42,7 +63,7 @@ class SidePanel extends L.Control {
     L.DomEvent.disableClickPropagation(this._panel);
 
     if (this.options.hasTabs) {
-      this._initTabs(this.options.tabsPosition);
+      this._initTabs(this.options.tabsPosition!); // `!` 'cause we have a default value
     } else {
       this._initContent();
     }
@@ -55,10 +76,8 @@ class SidePanel extends L.Control {
     this._toggleButton();
   }
 
-  private _initTabs(tabsPosition?: 'top' | 'bottom' | 'left' | 'right'): void {
-    if (typeof tabsPosition === 'string') {
-      L.DomUtil.addClass(this._panel, 'tabs-' + tabsPosition);
-    }
+  private _initTabs(tabsPosition: 'top' | 'bottom' | 'left' | 'right'): void {
+    L.DomUtil.addClass(this._panel, 'tabs-' + tabsPosition);
 
     const tabsLinks = this._panel.querySelectorAll(
       'a.sidebar-tab-link'
@@ -68,14 +87,14 @@ class SidePanel extends L.Control {
     ) as NodeListOf<HTMLElement>;
 
     tabsLinks.forEach((tabLink, tabIndex) => {
-      let defaultTab: HTMLElement | undefined;
+      let defaultTab: boolean = false;
       let startContent: HTMLElement | undefined;
 
       if (
         typeof this.options.defaultTab === 'number' &&
         this.options.defaultTab - 1 === tabIndex
       ) {
-        defaultTab = tabLink;
+        defaultTab = true;
         startContent = tabsContents[tabIndex];
       }
 
@@ -83,14 +102,14 @@ class SidePanel extends L.Control {
         typeof this.options.defaultTab === 'string' &&
         this.options.defaultTab === tabLink.dataset.tabLink
       ) {
-        defaultTab = tabLink;
+        defaultTab = true;
         startContent = this._panel.querySelector(
           `.sidepanel-tab-content[data-tab-content="${this.options.defaultTab}"]`
         ) as HTMLElement;
       }
 
-      if (defaultTab && !L.DomUtil.hasClass(defaultTab, 'active')) {
-        L.DomUtil.addClass(defaultTab, 'active');
+      if (defaultTab) {
+        L.DomUtil.addClass(tabLink, 'active');
         L.DomUtil.addClass(startContent!, 'active');
       }
 
@@ -100,18 +119,16 @@ class SidePanel extends L.Control {
         (e: Event) => {
           L.DomEvent.preventDefault(e);
 
-          if (!L.DomUtil.hasClass(tabLink, 'active')) {
-            tabsLinks.forEach((link) => L.DomUtil.removeClass(link, 'active'));
-            L.DomUtil.addClass(tabLink, 'active');
+          tabsLinks.forEach((link) => L.DomUtil.removeClass(link, 'active'));
+          L.DomUtil.addClass(tabLink, 'active');
 
-            tabsContents.forEach((element) => {
-              if (tabLink.dataset.tabLink === element.dataset.tabContent) {
-                L.DomUtil.addClass(element, 'active');
-              } else {
-                L.DomUtil.removeClass(element, 'active');
-              }
-            });
-          }
+          tabsContents.forEach((element) => {
+            if (tabLink.dataset.tabLink === element.dataset.tabContent) {
+              L.DomUtil.addClass(element, 'active');
+            } else {
+              L.DomUtil.removeClass(element, 'active');
+            }
+          });
 
           this.options.onTabClick!(tabLink); // `!` 'cause we have a default value
         },
@@ -128,6 +145,7 @@ class SidePanel extends L.Control {
     const closed = L.DomUtil.hasClass(this._panel, 'closed');
 
     if (!opened && !closed) {
+      // If the panel is in its initial state
       L.DomUtil.addClass(this._panel, 'opened');
     } else if (!opened && closed) {
       L.DomUtil.addClass(this._panel, 'opened');
@@ -136,15 +154,14 @@ class SidePanel extends L.Control {
       IS_OPENED = false;
       L.DomUtil.removeClass(this._panel, 'opened');
       L.DomUtil.addClass(this._panel, 'closed');
-    } else {
-      L.DomUtil.addClass(this._panel, 'opened');
     }
 
     if (this.options.pushControls) {
       const map = this._map;
       if (map) {
-        const mapContainer =
-          map instanceof HTMLElement ? map : map.getContainer();
+        // TypeScript expects `map` to be an instance of `L.Map` but it can also be an HTMLElement
+        // We assume that if it's not an instance of `L.Map`, it's an HTMLElement
+        const mapContainer = map instanceof L.Map ? map.getContainer() : map;
         const controlsContainer = mapContainer.querySelector(
           '.leaflet-control-container'
         ) as HTMLElement;
