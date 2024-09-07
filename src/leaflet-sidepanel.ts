@@ -42,11 +42,15 @@ class SidePanel extends L.Control {
       darkMode: false,
       pushControls: false,
       defaultTab: 1,
+      size: '400px',
       onTabClick: () => {},
       onToggle: () => {},
       ...options, // Merge with default options
     };
     this._panel = L.DomUtil.get(id)!; // The `!` tells TypeScript we're sure the element exists
+    this._panel.style.setProperty('--panel-width', this.options.size!); // `!` 'cause we have a default value
+
+    // Set the options
     L.setOptions(this, options);
   }
 
@@ -61,6 +65,23 @@ class SidePanel extends L.Control {
 
     L.DomEvent.disableScrollPropagation(this._panel);
     L.DomEvent.disableClickPropagation(this._panel);
+
+    if (!!this.options.pushControls) {
+      const map = this._map;
+      const mapContainer = map instanceof L.Map ? map.getContainer() : map;
+      const controlsContainer = mapContainer.querySelector(
+        '.leaflet-control-container'
+      ) as HTMLElement;
+
+      L.DomUtil.addClass(
+        controlsContainer,
+        'leaflet-animate-control-container'
+      );
+      controlsContainer.style.setProperty(
+        `--panel-width-${this.options.panelPosition}`,
+        this.options.size!
+      ); // `!` 'cause we have a default value
+    }
 
     if (this.options.hasTabs) {
       this._initTabs(this.options.tabsPosition!); // `!` 'cause we have a default value
@@ -158,18 +179,13 @@ class SidePanel extends L.Control {
 
     if (this.options.pushControls) {
       const map = this._map;
-      if (map) {
+      if (!!map) {
         // TypeScript expects `map` to be an instance of `L.Map` but it can also be an HTMLElement
         // We assume that if it's not an instance of `L.Map`, it's an HTMLElement
         const mapContainer = map instanceof L.Map ? map.getContainer() : map;
         const controlsContainer = mapContainer.querySelector(
           '.leaflet-control-container'
         ) as HTMLElement;
-
-        L.DomUtil.addClass(
-          controlsContainer,
-          'leaflet-animate-control-container'
-        );
 
         if (IS_OPENED) {
           L.DomUtil.removeClass(
