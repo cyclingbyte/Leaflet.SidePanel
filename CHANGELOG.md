@@ -1,6 +1,13 @@
 # Leaflet.SidePanel Changelog
 
-## v1.2.0 (2024-08-29) <img src="./examples/assets/language-typescript.svg" height="20px" />
+## v1.2.0
+
+- feat: set panel width via options
+- chore(tests): added tests
+- chore(deps-dev): bump @types/node from 22.5.0 to 22.5.2
+- chore(deps-dev): bump vite-plugin-dts from 4.0.3 to 4.1.0
+
+## v1.2.0 (2024-08-29)
 
 - feat: add typescript <img src="./examples/assets/language-typescript.svg" height="16px" /> support
 - feat: new option `onToggle`
