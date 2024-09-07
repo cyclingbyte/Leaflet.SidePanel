@@ -68,22 +68,19 @@ class SidePanel extends L.Control {
 
     if (!!this.options.pushControls) {
       const map = this._map;
-      if (!!map) {
-        const mapContainer =
-          map instanceof HTMLElement ? map : map.getContainer();
-        const controlsContainer = mapContainer.querySelector(
-          '.leaflet-control-container'
-        ) as HTMLElement;
+      const mapContainer = map instanceof L.Map ? map.getContainer() : map;
+      const controlsContainer = mapContainer.querySelector(
+        '.leaflet-control-container'
+      ) as HTMLElement;
 
-        L.DomUtil.addClass(
-          controlsContainer,
-          'leaflet-animate-control-container'
-        );
-        controlsContainer.style.setProperty(
-          `--panel-width-${this.options.panelPosition}`,
-          this.options.size!
-        ); // `!` 'cause we have a default value
-      }
+      L.DomUtil.addClass(
+        controlsContainer,
+        'leaflet-animate-control-container'
+      );
+      controlsContainer.style.setProperty(
+        `--panel-width-${this.options.panelPosition}`,
+        this.options.size!
+      ); // `!` 'cause we have a default value
     }
 
     if (this.options.hasTabs) {

@@ -157,12 +157,9 @@ describe('SidePanel', () => {
     ) as HTMLElement;
     expect(
       controlsContainer.classList.contains('leaflet-animate-control-container')
-    ).toBe(false);
+    ).toBe(true);
 
     sidePanel.toggle();
-    expect(
-      controlsContainer.classList.contains('leaflet-animate-control-container')
-    ).toBe(true);
     expect(
       controlsContainer.classList.contains(options.panelPosition + '-opened')
     ).toBe(true);
@@ -204,10 +201,16 @@ describe('SidePanel', () => {
     const controlsContainer = document.querySelector(
       '.leaflet-control-container'
     ) as HTMLElement;
-    sidePanel.toggle();
     expect(
       controlsContainer.classList.contains('leaflet-animate-control-container')
     ).toBe(false);
+    expect(
+      controlsContainer.classList.toString().match(/-opened|-closed/g)
+    ).toBeNull();
+    sidePanel.toggle();
+    expect(
+      controlsContainer.classList.toString().match(/-opened|-closed/g)
+    ).toBeNull();
   });
 
   it('should warn if position option is set', () => {
@@ -603,8 +606,6 @@ describe('SidePanel with HTMLElement', () => {
       .sidepanel('mySidepanel', { panelPosition: 'left', pushControls: true })
       // leaflet expects a map instance but also accepts HTMLElement
       .addTo(map);
-
-    sidePanel.toggle(); // This will trigger the `pushControls` logic
 
     const controlsContainer = (map as unknown as HTMLElement).querySelector(
       '.leaflet-control-container'
