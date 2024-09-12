@@ -12,11 +12,12 @@ const sidepanelLeft = L.control.sidepanel('mySidepanelLeft', {
 sidepanelLeft.addTo(map);
 
 const sidepanelRight = L.control.sidepanel('mySidepanelRight', {
+  hasTabs: false,
   panelPosition: 'right',
   tabsPosition: 'top',
   pushControls: true,
   darkMode: true,
-  defaultTab: 2,
+  size: '300px',
 });
 sidepanelRight.addTo(map);
 

@@ -23,6 +23,8 @@ $green: #199900;
 
 // panel
 $panel-width: 400px;
+$panel-font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+  'Helvetica Neue', sans-serif;
 $panel-background-color: $white;
 $dark-panel-background-color: $gray-900;
 $panel-box-shadow:
@@ -111,9 +113,15 @@ $toggle-button-background: url('#{$toggle-button-arrow}') no-repeat 50% 50%;
 $dark-toggle-button-background: url('#{$dark-toggle-button-arrow}') no-repeat 50% 50%;
 $toggle-button-arrow-opacity: 1;
 
+:root {
+  --panel-width: 400px; // default panel width
+  --panel-width-left: 400px; // default panel width
+  --panel-width-right: 400px; // default panel width
+}
+
 // Panel
 .sidepanel {
-  width: $panel-width;
+  width: var(--panel-width);
   height: 100%;
   border: 0;
   position: absolute;
@@ -584,7 +592,7 @@ $toggle-button-arrow-opacity: 1;
 // Animate control
 .leaflet-animate-control-container {
   &.left-opened .leaflet-left {
-    left: $panel-width;
+    left: var(--panel-width-left);
     transition: left 0.5s ease;
 
     @media screen and (max-width: 450px) {
@@ -598,7 +606,7 @@ $toggle-button-arrow-opacity: 1;
   }
 
   &.right-opened .leaflet-right {
-    right: $panel-width;
+    right: var(--panel-width-right);
     transition: right 0.5s ease;
 
     @media screen and (max-width: 450px) {
