@@ -1,5 +1,6 @@
 import * as L from 'leaflet';
-import './leaflet-sidepanel.scss';
+import './scss/leaflet-sidepanel.scss';
+import './scss/animations.scss';
 
 class SidePanel extends L.Control {
   public options: L.SidePanelOptions;

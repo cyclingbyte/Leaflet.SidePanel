@@ -1,0 +1,36 @@
+// Mixin for slide animations
+@mixin slideX($from, $to) {
+  0% {
+    transform: translateX($from);
+  }
+  100% {
+    transform: translateX($to);
+  }
+}
+
+// Animations using the mixins
+@keyframes slide-left {
+  @include slideX(0, -100%);
+}
+
+@keyframes slide-right {
+  @include slideX(-100%, 0);
+}
+
+@keyframes slide-left-two {
+  @include slideX(0, 100%);
+}
+
+@keyframes slide-right-two {
+  @include slideX(100%, 0);
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
