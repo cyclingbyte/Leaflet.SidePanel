@@ -1,6 +1,6 @@
 # Leaflet.SidePanel Changelog
 
-## v1.2.0 (2024-09-18)
+## v1.2.1 (2024-09-18)
 
 - feat: set panel width via options
 - chore(tests): added tests
