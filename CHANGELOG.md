@@ -7,8 +7,12 @@
 - chore(deps-dev): bump @types/node from 22.5.0 to 22.5.5
 - chore(deps-dev): bump vite-plugin-dts from 4.0.3 to 4.2.1
 - chore(deps-dev): bump eslint from 9.9.1 to 9.10.0
-- chore(deps-dev): bump sass from 1.77.8 to 1.78.0
+- chore(deps-dev): bump sass from 1.77.8 to 1.79.1
 - chore(deps-dev): bump vite from 5.4.2 to 5.4.6
+- chore(deps-dev): bump typescript from 5.5.4 to 5.6.2
+- chore(deps-dev): bump vitest from 2.0.5 to 2.1.1
+- chore(deps-dev): bump @vitest/coverage-v8 from 2.0.5 to 2.1.1
+- chore(deps-dev): bump @vitest/ui from 2.0.5 to 2.1.1
 
 ## v1.2.0 (2024-08-29)
 
