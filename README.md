@@ -55,6 +55,11 @@ Or include the script and css in your html file
 - pushControls: true | _false (default)_ [boolean]<br />
   Shifts the map controls (like zoom) when the side panels open, to keep them visible and usabe
 - defaultTab: _1 (default)_ [number | string]
+- size: _'400px' (dafault)_ [string] (everything that can be used for width/higth in css)
+- onTabClick(tabLink: HTMLElement): void<br />
+  executed when a tab is clicked, passed the link as argument
+- onToggle(opened: boolean): void<br />
+  executed when the sidebar opened or closed
 
 ## Usage
 
