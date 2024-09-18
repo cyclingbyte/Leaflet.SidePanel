@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/cyclingbyte/Leaflet.SidePanel.git"
+    "url": "git+https://github.com/cyclingbyte/Leaflet.SidePanel.git"
   },
   "scripts": {
     "build": "vite build",
