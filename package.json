@@ -49,7 +49,7 @@
     "@vitest/coverage-v8": "^2.1.1",
     "@vitest/ui": "^2.1.1",
     "eslint": "^9.9.1",
-    "jsdom": "^25.0.0",
+    "jsdom": "^26.0.0",
     "prettier": "^3.3.3",
     "sass": "^1.79.1",
     "typescript": "^5.6.2",
