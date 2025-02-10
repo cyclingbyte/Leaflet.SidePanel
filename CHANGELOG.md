@@ -1,5 +1,15 @@
 # Leaflet.SidePanel Changelog
 
+## v1.2.2
+
+This update only updates some dependencies to fix security vulnerabilities
+
+- chore(deps-dev): bump rollup in the npm_and_yarn group
+- chore(deps-dev): bump the npm_and_yarn group with 4 updates
+- chore(deps-dev): bump jsdom from 25.0.0 to 26.0.0
+- chore(deps-dev): bump sass from 1.79.1 to 1.83.4
+- chore(deps-dev): bump eslint from 9.10.0 to 9.20.0
+
 ## v1.2.1 (2024-09-18)
 
 - feat: set panel width via options
