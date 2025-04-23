@@ -2,8 +2,9 @@
 
 ## v1.2.2
 
-This update only updates some dependencies to fix security vulnerabilities
+This update mainly updates some dependencies to fix security vulnerabilities and stay up to date
 
+- fix: Options object with undefined leads to unexpected errors
 - chore(deps-dev): bump rollup from 4.21.3 to 4.22.4 in the npm_and_yarn group
 - chore(deps-dev): bump jsdom from 25.0.0 to 26.0.0
 - chore(deps-dev): bump sass from 1.79.1 to 1.87.0
