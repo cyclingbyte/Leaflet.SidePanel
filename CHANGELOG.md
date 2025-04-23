@@ -1,5 +1,25 @@
 # Leaflet.SidePanel Changelog
 
+## v1.2.2
+
+This update mainly updates some dependencies to fix security vulnerabilities and stay up to date
+
+- fix: Options object with undefined leads to unexpected errors
+- chore(deps-dev): bump rollup from 4.21.3 to 4.22.4 in the npm_and_yarn group
+- chore(deps-dev): bump jsdom from 25.0.0 to 26.0.0
+- chore(deps-dev): bump sass from 1.79.1 to 1.87.0
+- chore(deps-dev): bump prettier from 3.3.3 to 3.5.3
+- chore(deps-dev): bump eslint from 9.10.0 to 9.20.0
+- chore(deps-dev): bump esbuild from 0.21.5 to 0.25.1
+- chore(deps-dev): bump vite from 5.4.6 to 6.3.2
+- chore(deps-dev): bump vitest from 2.1.1 to 3.1.2
+- chore(deps-dev): bump @vitest/coverage-v8 from 2.1.1 to 3.1.2
+- chore(deps-dev): bump @vitest/ui from 2.1.1 to 3.1.2
+- chore(deps-dev): bump @types/leaflet from 1.9.12 to 1.9.17
+- chore(deps-dev): bump @types/node from 22.5.5 to 22.14.1
+- chore(deps-dev): bump @stryker-mutator/core from 8.5.0 to 8.7.1
+- chore(CI): Add permissions to workflows
+
 ## v1.2.1 (2024-09-18)
 
 - feat: set panel width via options
