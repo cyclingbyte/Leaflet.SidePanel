@@ -7,8 +7,14 @@ class SidePanel extends L.Control {
   private _map?: L.Map; // Optional 'cause it's initialized in `addTo`
 
   constructor(id: string, options?: L.SidePanelOptions) {
-    // Check for invalid options
     options = options || {};
+    // Remove all options with undefined values
+    Object.keys(options).forEach((key) => {
+      if (options[key] === undefined) {
+        delete options[key];
+      }
+    });
+    // Check for invalid options
     if (!!options.position) {
       const msg =
         'Leaflet.SidePanel: You cannot set the `position` option. It is controlled by the `panelPosition` option.';

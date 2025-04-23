@@ -14,6 +14,8 @@ declare module 'leaflet' {
     size?: string;
     onTabClick?: (tabLink: HTMLElement) => void;
     onToggle?: (opened: boolean) => void;
+
+    [key: string]: any;
   }
   namespace Control {
     class SidePanel extends L.Control {

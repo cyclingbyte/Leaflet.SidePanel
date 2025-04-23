@@ -326,6 +326,43 @@ describe('SidePanel', () => {
 
     expect(L.DomUtil.hasClass(panelElement, 'tabs-top')).toBe(false); // No tabs should be present
   });
+
+  it('should remove options with undefined values', () => {
+    const options = {
+      panelPosition: undefined,
+      hasTabs: undefined,
+      tabsPosition: undefined,
+      darkMode: undefined,
+      pushControls: false,
+      defaultTab: 1,
+      size: undefined,
+    } as L.SidePanelOptions;
+
+    // Create a spy on console methods to ensure no warnings are triggered
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+    // Initialize the sidepanel with these options
+    sidePanel = L.control.sidepanel('mySidepanel', options).addTo(map);
+
+    expect(errorSpy).not.toHaveBeenCalledWith(
+      expect.stringContaining('tabsPosition')
+    );
+
+    // Check specific options to verify their default values
+    const sidePanelOptions = sidePanel.options as L.SidePanelOptions; // Cast to SidePanelOptions
+    expect(sidePanelOptions.panelPosition).toBe('left');
+    expect(sidePanelOptions.hasTabs).toBe(true);
+    expect(sidePanelOptions.tabsPosition).toBe('top');
+    expect(sidePanelOptions.darkMode).toBe(false);
+    expect(sidePanelOptions.pushControls).toBe(false);
+    expect(sidePanelOptions.defaultTab).toBe(1);
+    expect(sidePanelOptions.size).toBe('400px');
+
+    // Clean up
+    errorSpy.mockRestore();
+    warnSpy.mockRestore();
+  });
 });
 
 describe('SidePanel with Tabs', () => {
