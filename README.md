@@ -41,7 +41,7 @@ Or include the script and css in your html file
 ```html
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/leaflet.sidepanel@1.2.2/dist/style.css"
+  href="https://cdn.jsdelivr.net/npm/leaflet.sidepanel@1.2.2/dist/leaflet.sidepanel.css"
 />
 <script src="https://cdn.jsdelivr.net/npm/leaflet.sidepanel@1.2.2"></script>
 ```
@@ -68,7 +68,7 @@ Or include the script and css in your html file
 ```javascript
 import L from 'leaflet';
 import 'leaflet.sidepanel';
-import 'leaflet.sidepanel/dist/style.css';
+import 'leaflet.sidepanel/dist/leaflet.sidepanel.css';
 
 const panelRight = L.control
   .sidepanel('panelID', {

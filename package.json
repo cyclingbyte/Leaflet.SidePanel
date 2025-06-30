@@ -10,7 +10,7 @@
   "main": "dist/leaflet-sidepanel.cjs.js",
   "browser": "dist/leaflet-sidepanel.umd.js",
   "module": "dist/leaflet-sidepanel.es.js",
-  "style": "dist/style.css",
+  "style": "dist/leaflet.sidepanel.css",
   "types": "dist/types/leaflet-sidepanel.d.ts",
   "files": [
     "dist/",
