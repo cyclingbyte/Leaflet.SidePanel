@@ -1,6 +1,17 @@
 # Leaflet.SidePanel Changelog
 
+## v1.2.3
+⚠️ **Attention**: The previous version unintentionally introduced a breaking change. This change will remain in place and will **not** be reverted.
+
+This version only updates the documentation and some development dependencies — no functional changes have been made.
+
 ## v1.2.2
+
+Edit: ⚠️ **BREAKING** ⚠️
+With the update of vite, **the `style.css` was renamed to `leaflet.sidepanel.css`**
+I'm sorry for this breaking change in a bug fix release. I oversaw this detail.
+
+---
 
 This update mainly updates some dependencies to fix security vulnerabilities and stay up to date
 
