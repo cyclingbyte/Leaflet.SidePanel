@@ -1,6 +1,7 @@
 # Leaflet.SidePanel Changelog
 
 ## v1.2.3
+
 ⚠️ **Attention**: The previous version unintentionally introduced a breaking change. This change will remain in place and will **not** be reverted.
 
 This version only updates the documentation and some development dependencies — no functional changes have been made.
