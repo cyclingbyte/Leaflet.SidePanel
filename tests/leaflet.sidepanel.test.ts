@@ -191,6 +191,7 @@ describe('SidePanel', () => {
     expect(errorSpy).toHaveBeenCalledWith(
       'Leaflet.SidePanel: You must add the SidePanel to the map before setting the `pushControls` option.'
     );
+    errorSpy.mockReset();
   });
 
   it('should not move controls if pushControls is `false`', () => {
@@ -443,7 +444,12 @@ describe('SidePanel with Tabs', () => {
 
     // Simulate tab click
     tabLink.click();
-    expect(onTabClick).toHaveBeenCalledWith(tabLink);
+
+    // Verify the callback was called
+    expect(onTabClick).toHaveBeenCalled();
+    // Check that it was called with the tabLink by comparing the element itself
+    // TODO: Use toBeCalledWith as soon as the bug is fixed in Vitest
+    expect(onTabClick.mock.calls[0][0]).toBe(tabLink);
   });
 
   it('should activate the default tab based on defaultTab option (string)', () => {

@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        job: ['lint', 'format:check', 'type-check', 'test:check']
+        job: ['lint:check', 'format:check', 'type:check', 'test:check']
 
     steps:
       - name: Checkout repository
