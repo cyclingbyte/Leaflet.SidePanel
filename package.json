@@ -25,12 +25,12 @@
   },
   "scripts": {
     "build": "vite build",
-    "type-check": "tsc --noEmit",
+    "type:check": "tsc --noEmit",
     "test": "vitest --coverage --ui",
     "test:check": "vitest",
     "test:mutation": "stryker run",
-    "lint": "eslint --max-warnings 0 . || (echo 'Linter failed' && exit 1)",
-    "lint:fix": "eslint --fix .",
+    "lint": "eslint --fix .",
+    "lint:check": "eslint --max-warnings 0 . || (echo 'Linter failed' && exit 1)",
     "format": "prettier --write .",
     "format:check": "prettier --check . || (echo 'Code is not formatted' && exit 1)"
   },
