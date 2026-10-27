@@ -1,5 +1,6 @@
 # Publishes the package to npm when a release is created.
 # Authenticates via npm trusted publishing (OIDC), so no npm token secret is needed.
+# The release is staged and must be approved by a maintainer (2FA) on npmjs.com.
 # See https://docs.npmjs.com/trusted-publishers
 
 name: Publish Node.js Package
@@ -25,4 +26,4 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: pnpm install --frozen-lockfile
       - run: pnpm run build
-      - run: npm publish
+      - run: npm stage publish
