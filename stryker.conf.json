@@ -1,6 +1,10 @@
 {
   "$schema": "./node_modules/@stryker-mutator/core/schema/stryker-schema.json",
-  "packageManager": "npm",
+  "packageManager": "pnpm",
+  "plugins": [
+    "@stryker-mutator/vitest-runner",
+    "@stryker-mutator/typescript-checker"
+  ],
   "reporters": ["html", "clear-text", "progress", "json"],
   "testRunner": "vitest",
   "coverageAnalysis": "perTest",
