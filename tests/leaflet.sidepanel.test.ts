@@ -37,8 +37,8 @@ describe('SidePanel', () => {
       { url: 'http://localhost' }
     );
 
-    global.document = dom.window.document;
-    global.window = dom.window;
+    vi.stubGlobal('document', dom.window.document);
+    vi.stubGlobal('window', dom.window);
 
     panelElement = document.getElementById('mySidepanel')!;
     map = L.map(document.getElementById('map')!);
@@ -419,8 +419,8 @@ describe('SidePanel with Tabs', () => {
       { url: 'http://localhost' }
     );
 
-    global.document = dom.window.document;
-    global.window = dom.window;
+    vi.stubGlobal('document', dom.window.document);
+    vi.stubGlobal('window', dom.window);
 
     panelElement = document.getElementById(panelId)!;
     map = L.map(document.getElementById('map')!);
@@ -635,8 +635,8 @@ describe('SidePanel with HTMLElement', () => {
       { url: 'http://localhost' }
     );
 
-    global.document = dom.window.document;
-    global.window = dom.window;
+    vi.stubGlobal('document', dom.window.document);
+    vi.stubGlobal('window', dom.window);
 
     panelElement = document.getElementById('mySidepanel') as HTMLElement;
 
