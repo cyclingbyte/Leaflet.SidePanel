@@ -1,5 +1,9 @@
 # Leaflet.SidePanel Changelog
 
+## v1.2.4
+
+In this version, I have updated some development dependencies as well as the workflow for publishing to the npm registry. No functional changes have been made.
+
 ## v1.2.3
 
 ⚠️ **Attention**: The previous version unintentionally introduced a breaking change. This change will remain in place and will **not** be reverted.
