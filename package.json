@@ -47,7 +47,7 @@
     "@stryker-mutator/vitest-runner": "^10.1.1",
     "@types/jsdom": "^30.0.0",
     "@types/leaflet": "^1.9.22",
-    "@types/node": "^24.19.2",
+    "@types/node": "^26.6.6",
     "@vitest/coverage-v8": "^5.0.5",
     "@vitest/ui": "^5.0.5",
     "eslint": "^10.13.0",
